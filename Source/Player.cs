@@ -27,19 +27,19 @@ public class Player : MonoBehaviour
         if (start)
         {
             discount = new Dictionary<string, int>();
-            discount.Add("��ǹ���", 60000);
-            discount.Add("����§�پ�����", 60000);
-            discount.Add("���»�Сѹ���Ե", 0);
-            discount.Add("���»�Сѹ�آ�Ҿ����ͧ", 0);
-            discount.Add("���»�Сѹ�آ�Ҿ������", 0);
-            discount.Add("���»�Сѹ���Ե�ӹҭ", 0);
-            discount.Add("�ͧ�ع���ͧ����§�վ", 0);
-            discount.Add("�Թ������Сѹ�ѧ��", 0);
+            discount.Add("ส่วนตัว", 60000);
+            discount.Add("เลี้ยงดูพ่อแม่", 60000);
+            discount.Add("เบี้ยประกันชีวิต", 0);
+            discount.Add("เบี้ยประกันสุขภาพตัวเอง", 0);
+            discount.Add("เบี้ยประกันสุขภาพพ่อแม่", 0);
+            discount.Add("เบี้ยประกันชีวิตบำนาญ", 0);
+            discount.Add("กองทุนสำรองเลี้ยงชีพ", 0);
+            discount.Add("เงินสมทบประกันสังคม", 0);
             discount.Add("RMF", 0);
             discount.Add("SSF", 0);
-            discount.Add("�Թ��ԨҤ�����", 0);
-            discount.Add("�Թ��ԨҤ", 0);
-            Debug.Log("���Ŵ���͹: ���ҧ�����");
+            discount.Add("เงินบริจาคพิเศษ", 0);
+            discount.Add("เงินบริจาค", 0);
+            Debug.Log("ค่าลดหย่อน: สร้างสำเร็จ");
             start = false;
             life_act = true;
             self_act = true;
@@ -71,19 +71,19 @@ public class Player : MonoBehaviour
     {
         if (val1 == 0)
         {
-            dis_name = "���»�Сѹ���Ե";
+            dis_name = "เบี้ยประกันชีวิต";
         }
         else if (val1 == 1)
         {
-            dis_name = "���»�Сѹ�آ�Ҿ����ͧ";
+            dis_name = "เบี้ยประกันสุขภาพตัวเอง";
         }
         else if (val1 == 2)
         {
-            dis_name = "���»�Сѹ�آ�Ҿ������";
+            dis_name = "เบี้ยประกันสุขภาพพ่อแม่";
         }
         else if (val1 == 3)
         {
-            dis_name = "���»�Сѹ���Ե�ӹҭ";
+            dis_name = "เบี้ยประกันชีวิตบำนาญ";
         }
         Debug.Log("Complete " + dis_name);
     }
@@ -107,7 +107,7 @@ public class Player : MonoBehaviour
 
     public void fund2(int val3)
     {
-        dis_name = "�ͧ�ع���ͧ����§�վ";
+        dis_name = "กองทุนสำรองเลี้ยงชีพ";
         if (provident_act)
         {
             if (val3 == 0)
@@ -139,7 +139,7 @@ public class Player : MonoBehaviour
 
     public void fund3(int val3)
     {
-        dis_name = "�Թ������Сѹ�ѧ��";
+        dis_name = "เงินสมทบประกันสังคม";
         if (Social_act)
         {
             if (val3 == 0)
@@ -224,11 +224,11 @@ public class Player : MonoBehaviour
     {
         if (num1 == 0)
         {
-            dis_name = "�Թ��ԨҤ�����";
+            dis_name = "เงินบริจาคพิเศษ";
         }
         else if (num1 == 1)
         {
-            dis_name = "�Թ��ԨҤ";
+            dis_name = "เงินบริจาค";
         }
         Debug.Log("Complete " + dis_name);
     }
@@ -251,19 +251,19 @@ public class Player : MonoBehaviour
 
     public void changeActive()
     {
-        if (dis_name == "���»�Сѹ���Ե")
+        if (dis_name == "เบี้ยประกันชีวิต")
         {
             life_act = false;
         }
-        else if (dis_name == "���»�Сѹ�آ�Ҿ����ͧ")
+        else if (dis_name == "เบี้ยประกันสุขภาพตัวเอง")
         {
             self_act = false;
         }
-        else if (dis_name == "���»�Сѹ�آ�Ҿ������")
+        else if (dis_name == "เบี้ยประกันสุขภาพพ่อแม่")
         {
             parent_act = false;
         }
-        else if (dis_name == "���»�Сѹ���Ե�ӹҭ")
+        else if (dis_name == "เบี้ยประกันชีวิตบำนาญ")
         {
             persion_act = false;
         }
@@ -275,11 +275,11 @@ public class Player : MonoBehaviour
         {
             SSF_act = false;
         }
-        else if (dis_name == "�ͧ�ع���ͧ����§�վ")
+        else if (dis_name == "กองทุนสำรองเลี้ยงชีพ")
         {
             provident_act = false;
         }
-        else if (dis_name == "�Թ������Сѹ�ѧ��")
+        else if (dis_name == "เงินสมทบประกันสังคม")
         {
             Social_act = false;
         }
@@ -295,19 +295,19 @@ public class Player : MonoBehaviour
         {
             return SSF_act;
         }
-        else if (name == "���»�Сѹ���Ե")
+        else if (name == "เบี้ยประกันชีวิต")
         {
             return life_act;
         }
-        else if (name == "���»�Сѹ�آ�Ҿ����ͧ")
+        else if (name == "เบี้ยประกันสุขภาพตัวเอง")
         {
             return self_act;
         }
-        else if (name == "���»�Сѹ�آ�Ҿ������")
+        else if (name == "เบี้ยประกันสุขภาพพ่อแม่")
         {
             return parent_act;
         }
-        else if (name == "���»�Сѹ���Ե�ӹҭ")
+        else if (name == "เบี้ยประกันชีวิตบำนาญ")
         {
             return persion_act;
         }
