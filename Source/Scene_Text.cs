@@ -9,6 +9,6 @@ public class Scene_Text : MonoBehaviour
 
     void Update()
     {
-        sceneText.text = "Chapter " + Scene_Control.scenecount + "\n" + "‰µ√¡“ ∑’Ë " + Scene_Control.scenecount;
+        sceneText.text = "Chapter " + Scene_Control.scenecount + "\n" + "‡πÑ‡∏ï‡∏£‡∏°‡∏≤‡∏™‡∏ó‡∏µ‡πà " + Scene_Control.scenecount;
     }
 }
