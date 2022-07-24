@@ -10,13 +10,13 @@ public class Tax_cal : MonoBehaviour
     public Text discount_text;
     public Text expenses_text;
 
-    private float final_tax = 0; // ������
-    private float money_2 = 0; // �Թ�����ͧ��������
-    private float money = 0; // �����������
-    private float money_1; // �Թ���������� 1
-    private float money_dis = 0; // ������Ŵ���͹
-    private float income = 0; // ����Թ��
-    private float income2 = 0; // ���Ŵ���͹������ͧ�ع���ͧ����§�վ, RMF, SSF, ������, ���ºӹҭ
+    private float final_tax = 0; // หาภาษี
+    private float money_2 = 0; // เงินได้ที่ต้องเสียภาษี
+    private float money = 0; // รวมค่าใช้จ่าย
+    private float money_1; // เงินได้ประเภทที่ 1
+    private float money_dis = 0; // รวมค่าลดหย่อน
+    private float income = 0; // รวมเงินได้
+    private float income2 = 0; // ค่าลดหย่อนกลุ่มกองทุนสำรองเลี้ยงชีพ, RMF, SSF, การออม, เบี้ยบำนาญ
     private float give = 0;
     private float give2 = 0;
     private float tax = 0;
@@ -65,10 +65,10 @@ public class Tax_cal : MonoBehaviour
 
         taxCal(final_tax);
 
-        icon_text.text = income.ToString() + " �ҷ";
-        expenses_text.text = money.ToString() + " �ҷ";
-        discount_text.text = money_dis.ToString() + " �ҷ";
-        tax_text.text = calTax.ToString() + " �ҷ";
+        icon_text.text = income.ToString() + " บาท";
+        expenses_text.text = money.ToString() + " บาท";
+        discount_text.text = money_dis.ToString() + " บาท";
+        tax_text.text = calTax.ToString() + " บาท";
 
         Debug.Log(final_tax);
         Debug.Log(calTax);
@@ -80,10 +80,10 @@ public class Tax_cal : MonoBehaviour
         foreach (var item in Money.income)
         {
             income += item.Value;
-            if (item.Key == "�Թ��͹" || item.Key == "��Ҩ�ҧ�����")
+            if (item.Key == "เงินเดือน" || item.Key == "ค่าจ้างทั่วไป")
             {
                 money01 += item.Value;
-                if (item.Key == "�Թ��͹")
+                if (item.Key == "เงินเดือน")
                 {
                     money_1 += item.Value;
                 }
@@ -107,7 +107,7 @@ public class Tax_cal : MonoBehaviour
     float exp(string name, int num)
     {
         float test = 0;
-        if (name == "����Ԣ�Է���")
+        if (name == "ค่าลิขสิทธิ์")
         {
             if (num * 50 / 100 >= 100000)
             {
@@ -118,19 +118,19 @@ public class Tax_cal : MonoBehaviour
                 test += num * 50 / 100;
             }
         }
-        else if (name == "������")
+        else if (name == "ค่าเช่า")
         {
             test = num * 30 / 100;
         }
-        else if (name == "����ԪҪվ�����")
+        else if (name == "ค่าวิชาชีพอิสระ")
         {
             test = num * 30 / 100;
         }
-        else if (name == "����Ѻ����")
+        else if (name == "ค่ารับเหมา")
         {
             test = num * 60 / 100;
         }
-        else if (name == "�Թ������")
+        else if (name == "เงินได้อื่นๆ")
         {
             if (num <= 300000)
             {
@@ -154,53 +154,53 @@ public class Tax_cal : MonoBehaviour
     {
         foreach (var item2 in Player.discount)
         {
-            if (item2.Key == "�ؤ��")
+            if (item2.Key == "บุคคล")
             {
                 money_dis += item2.Value;
             }
-            else if (item2.Key == "�������")
+            else if (item2.Key == "คู่สมรส")
             {
                 money_dis += item2.Value;
             }
-            else if (item2.Key == "�ص�")
+            else if (item2.Key == "บุตร")
             {
                 money_dis += item2.Value;
             }
-            else if (item2.Key == "����§�پ�����")
+            else if (item2.Key == "เลี้ยงดูพ่อแม่")
             {
                 money_dis += item2.Value;
             }
-            else if (item2.Key == "���ԡ��")
+            else if (item2.Key == "คนพิการ")
             {
                 money_dis += item2.Value * 60000;
             }
-            else if (item2.Key == "���»�Сѹ���Ե")
+            else if (item2.Key == "เบี้ยประกันชีวิต")
             {
                 if (item2.Value <= 100000) { money_dis += item2.Value; }
                 else { money_dis += 100000; }
             }
-            else if (item2.Key == "���»�Сѹ�آ�Ҿ������")
+            else if (item2.Key == "เบี้ยประกันสุขภาพพ่อแม่")
             {
                 if (item2.Value <= 15000) { money_dis += item2.Value; }
                 else { money_dis += 15000; }
             }
-            else if (item2.Key == "�͡���¡�����")
+            else if (item2.Key == "ดอกเบี้ยกู้ยืม")
             {
                 money_dis += item2.Value;
             }
-            else if (item2.Key == "�Թ������Сѹ�ѧ��")
+            else if (item2.Key == "เงินสมทบประกันสังคม")
             {
                 money_dis += item2.Value;
             }
-            else if (item2.Key == "���»�Сѹ�آ�Ҿ����ͧ")
+            else if (item2.Key == "เบี้ยประกันสุขภาพตัวเอง")
             {
                 money_dis += item2.Value;
             }
-            else if (item2.Key == "�Թ��ԨҤ�����")
+            else if (item2.Key == "เงินบริจาคพิเศษ")
             {
                 give += item2.Value;
             }
-            else if (item2.Key == "�Թ��ԨҤ")
+            else if (item2.Key == "เงินบริจาค")
             {
                 give2 += item2.Value;
             }
@@ -210,7 +210,7 @@ public class Tax_cal : MonoBehaviour
 
     void dis2(string name2, int num2)
     {
-        if (name2 == "�ͧ�ع���ͧ����§�վ")
+        if (name2 == "กองทุนสำรองเลี้ยงชีพ")
         {
             income2 += num2;
         }
@@ -225,7 +225,7 @@ public class Tax_cal : MonoBehaviour
                 income2 += num2;
             }
         }
-        else if (name2 == "���»�Сѹ���Ե�ӹҭ")
+        else if (name2 == "เบี้ยประกันชีวิตบำนาญ")
         {
             if (money_2 * 15 / 100 < 200000)
             {
@@ -243,7 +243,7 @@ public class Tax_cal : MonoBehaviour
                 income2 += 200000;
             }
         }
-        else if (name2 == "�Թ�����ͧ�ع��������觪ҵ�")
+        else if (name2 == "เงินสะสมกองทุนการออมแห่งชาติ")
         {
             if (num2 >= 13200)
             {
